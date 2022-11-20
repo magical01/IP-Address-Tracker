@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+@include('partials/head.html')
+
+<body class="page__body">
+  <div class="site-container">
+    <!-- @include('partials/header.html') -->
+    <main class="main">
+      <section class="content">
+        <div class="content__wrapper">
+          <h1 class="title">IP Address Tracker</h1>
+          <div class="content__search">
+            <input class="content__input input-reset" type="text">
+            <button class="content__seacrh-btn btn-reset"></button>
+          </div>
+          <div class="content__info info">
+            <div class="info__item">
+              <strong class="info__subtitle">IP Address</strong>
+              <h2 class="info__title">174.27.48.178</h2>
+            </div>
+            <div class="info__item">
+              <strong class="info__subtitle">Location</strong>
+              <h2 class="info__title">US, Idaho</h2>
+            </div>
+            <div class="info__item">
+              <strong class="info__subtitle">Timezone</strong>
+              <h2 class="info__title">UTC
+                <span class="info__title-timezone">-07:00</span>
+              </h2>
+            </div>
+            <div class="info__item">
+              <strong class="info__subtitle">ISP</strong>
+              <h2 class="info__title">CenturyLink Communications, LLC</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  </div>
+</body>
+
+</html>
