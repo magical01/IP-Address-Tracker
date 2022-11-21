@@ -1,22 +1,54 @@
 import vars from "../_vars";
-import {validateIp} from './validation-ip'
-
+import L from 'leaflet';
+import {validateIp} from './validation-ip';
+import {setTileLayer} from './tile-layer.js';
+import {setOffset} from './offset.js';
 
 vars.searchBtn.addEventListener('click', getData);
 vars.inputIp.addEventListener('keydown', handleKey);
 
+const markerIcon = L.icon({
+  iconUrl: '../img/icon-location.svg',
+  iconSize: [30, 40],
+
+});
+
+const map = L.map(vars.mapEl, {
+  center: [51.505, -0.09],
+  zoom: 13,
+  zoomControl: false,
+});
+
+setTileLayer(map);
+
+L.marker([51.505, -0.09], {icon: markerIcon}).addTo(map);
+
 function getData() {
   if (validateIp(vars.inputIp.value)) {
     fetch(`
-    https://geo.ipify.org/api/v2/country?apiKey=at_IxmA6XU9ddI9mnaqyXLI2gfkxd6lm&ipAddress=${vars.inputIp.value}`)
+    https://geo.ipify.org/api/v2/country,city?apiKey=at_IxmA6XU9ddI9mnaqyXLI2gfkxd6lm&ipAddress=${vars.inputIp.value}`)
       .then(response => response.json())
-      .then(console.log)
+      .then(data => renderInfo(data))
   }
-
 }
 
 function handleKey(e) {
   if (e.key == 'Enter') {
     getData();
+  }
+}
+
+function renderInfo(data) {
+  console.log(data)
+  vars.ipEl.textContent = data.ip;
+  vars.locationEl.textContent = `${data.location.country}, ${data.location.region}`;
+  vars.timezoneEl.textContent = data.location.timezone;
+  vars.ispEl.textContent = data.isp;
+
+  map.setView([data.location.lat, data.location.lng]);
+  L.marker([data.location.lat, data.location.lng], {icon: markerIcon}).addTo(map);
+
+  if (matchMedia('(max-width: 1023px)').matches) {
+    setOffset(map);
   }
 }

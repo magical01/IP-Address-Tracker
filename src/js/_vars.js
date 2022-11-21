@@ -5,6 +5,9 @@ export default {
   bodyEl: document.body,
   inputIp: document.querySelector('.content__input'),
   searchBtn: document.querySelector('.content__search-btn'),
-  // inputIp: document.querySelector('.content__input'),
-  // inputIp: document.querySelector('.content__input'),
+  ipEl: document.querySelector('.ip'),
+  locationEl: document.querySelector('.location'),
+  timezoneEl: document.querySelector('.timezone'),
+  ispEl: document.querySelector('.isp'),
+  mapEl: document.querySelector('.map'),
 }
