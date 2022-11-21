@@ -7,10 +7,128 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  &__search {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    &-btn {
+      position: relative;
+      border-radius: 0 10px 10px 0;
+      padding: 0 15px;
+      color: #fff;
+      background-color: #000;
+      transition: background-color .2s;
+
+      &:hover {
+        background-color: rgb(77, 77, 77);
+        transition: background-color .2s;
+      }
+
+      &::before {
+        content: '';
+        position: relative;
+        display: block;
+        left: -2px;
+        border: 2px solid;
+        border-color: white white transparent transparent;
+        width: 13px;
+        height: 13px;
+        background-color: transparent;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  &__input {
+    border-radius: 10px 0 0 10px;
+    padding: 15px 20px;
+    outline: none;
+    max-width: 500px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    color: hsl(0, 0%, 17%);
+
+    &::placeholder {
+      transition: opacity .3s;
+    }
+
+    &:active,
+    &:focus {
+      &::placeholder {
+        opacity: 0;
+        transition: opacity .3s;
+      }
+    }
 
   }
 }
 
 .title {
   margin: 0;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 30px;
+  color: white;
+}
+
+.info {
+  position: relative;
+  display: flex;
+  left: 15px;
+  z-index: 500;
+  border-radius: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px;
+  max-width: 1000px;
+  width: 100%;
+  transform: translateY(50%);
+  background-color: #fff;
+
+  &__item {
+    position: relative;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 25%;
+    padding: 0 10px;
+
+    &:not(:last-child) {
+      margin-bottom: 25px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: 90%;
+        background-color: #d9d9d9;
+      }
+    }
+
+
+  }
+
+  &__subtitle {
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    color: #959595;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    color: #333333;
+
+    @include tablet {
+      font-size: 20px;
+    }
+  }
 }
