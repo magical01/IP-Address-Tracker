@@ -8,7 +8,7 @@ vars.searchBtn.addEventListener('click', getData);
 vars.inputIp.addEventListener('keydown', handleKey);
 
 const markerIcon = L.icon({
-  iconUrl: '../img/icon-location.svg',
+  iconUrl: 'img/icon-location.svg',
   iconSize: [33, 44],
 
 });
