@@ -39,7 +39,6 @@ function handleKey(e) {
 }
 
 function renderInfo(data) {
-  console.log(data)
   vars.ipEl.textContent = data.ip;
   vars.locationEl.textContent = `${data.location.country}, ${data.location.region}`;
   vars.timezoneEl.textContent = data.location.timezone;
