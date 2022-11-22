@@ -9,19 +9,19 @@ vars.inputIp.addEventListener('keydown', handleKey);
 
 const markerIcon = L.icon({
   iconUrl: '../img/icon-location.svg',
-  iconSize: [30, 40],
+  iconSize: [33, 44],
 
 });
 
 const map = L.map(vars.mapEl, {
-  center: [51.505, -0.09],
-  zoom: 13,
+  center: [49.302, -0.07],
+  zoom: 12,
   zoomControl: false,
 });
 
 setTileLayer(map);
 
-L.marker([51.505, -0.09], {icon: markerIcon}).addTo(map);
+L.marker([49.302, -0.07], {icon: markerIcon}).addTo(map);
 
 function getData() {
   if (validateIp(vars.inputIp.value)) {
@@ -52,3 +52,11 @@ function renderInfo(data) {
     setOffset(map);
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetch(`
+  https://geo.ipify.org/api/v2/country,city?apiKey=at_IxmA6XU9ddI9mnaqyXLI2gfkxd6lm&ipAddress=174.27.48.178`)
+    .then(response => response.json())
+    .then(data => renderInfo(data))
+});
+
